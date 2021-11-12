@@ -2,7 +2,6 @@ import { getRepository } from 'typeorm';
 import path from 'path';
 import fs from 'fs';
 
-import { diskStorage } from 'multer';
 import UploadConfig from '../config/upload';
 import User from '../models/User';
 
