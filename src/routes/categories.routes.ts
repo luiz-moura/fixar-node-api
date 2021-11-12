@@ -4,7 +4,11 @@ import { getCustomRepository } from 'typeorm';
 import CategoriesRepository from '../repositories/CategoriesRepository';
 import CreateCategoryService from '../services/CreateCategoryService';
 
+import ensureAuthenticated from '../middlewares/ensureAuthenticated';
+
 const categoriesRouter = Router();
+
+categoriesRouter.use(ensureAuthenticated);
 
 categoriesRouter.get('/', async (request, response) => {
   const categoriesRepository = getCustomRepository(CategoriesRepository);
