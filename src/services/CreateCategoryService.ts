@@ -1,5 +1,7 @@
 import { getCustomRepository } from 'typeorm';
 
+import AppError from '../errors/AppError';
+
 import Category from '../models/Category';
 import CategoriesRepository from '../repositories/CategoriesRepository';
 
@@ -15,7 +17,7 @@ class CreateCategoryService {
     const findCategory = await categoriesRepository.findByName(name);
 
     if (findCategory) {
-      throw Error('This category alredy exists');
+      throw new AppError('This category alredy exists');
     }
 
     const category = categoriesRepository.create({
