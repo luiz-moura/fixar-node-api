@@ -18,17 +18,13 @@ categoriesRouter.get('/', async (request, response) => {
 });
 
 categoriesRouter.post('/', async (request, response) => {
-  try {
-    const { name, slug } = request.body;
+  const { name, slug } = request.body;
 
-    const createCategoryService = new CreateCategoryService();
+  const createCategoryService = new CreateCategoryService();
 
-    const category = await createCategoryService.execute({ name, slug });
+  const category = await createCategoryService.execute({ name, slug });
 
-    return response.json(category);
-  } catch (err) {
-    return response.status(400).json({ error: err.message });
-  }
+  return response.json(category);
 });
 
 export default categoriesRouter;
