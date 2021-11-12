@@ -23,7 +23,9 @@
     "prettier"
   ],
   "rules": {
+    "no-shadow": ["error", { "builtinGlobals": false, "hoist": "functions", "allow": [] }],
     "prettier/prettier": "error",
+    "class-methods-use-this": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
