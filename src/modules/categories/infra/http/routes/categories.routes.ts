@@ -1,6 +1,6 @@
 import { Router } from 'express';
+import { container } from 'tsyringe';
 
-import CategoriesRepository from '@modules/categories/infra/typeorm/repositories/CategoriesRepository';
 import CreateCategoryService from '@modules/categories/services/CreateCategoryService';
 
 import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated';
@@ -18,8 +18,7 @@ categoriesRouter.use(ensureAuthenticated);
 categoriesRouter.post('/', async (request, response) => {
   const { name, slug } = request.body;
 
-  const categoriesRepository = new CategoriesRepository();
-  const createCategoryService = new CreateCategoryService(categoriesRepository);
+  const createCategoryService = container.resolve(CreateCategoryService);
 
   const category = await createCategoryService.execute({ name, slug });
 

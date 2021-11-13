@@ -1,15 +1,21 @@
+import { injectable, inject } from 'tsyringe';
+
 import AppError from '@shared/errors/AppError';
 
 import Category from '../infra/typeorm/entities/Category';
-import ICategoriesRepository from '../repositories/ICategoriesService';
+import ICategoriesRepository from '../repositories/ICategoriesRepository';
 
 interface IRequest {
   name: string;
   slug: string;
 }
 
+@injectable()
 class CreateCategoryService {
-  constructor(private categoriesRepository: ICategoriesRepository) {}
+  constructor(
+    @inject('CategoriesRepository')
+    private categoriesRepository: ICategoriesRepository,
+  ) {}
 
   public async execute({ name, slug }: IRequest): Promise<Category> {
     const findCategory = await this.categoriesRepository.findByName(name);
