@@ -23,6 +23,7 @@
     "prettier"
   ],
   "rules": {
+    "import/no-unresolved": "off",
     "no-shadow": ["error", { "builtinGlobals": false, "hoist": "functions", "allow": [] }],
     "prettier/prettier": "error",
     "camelcase": "off",

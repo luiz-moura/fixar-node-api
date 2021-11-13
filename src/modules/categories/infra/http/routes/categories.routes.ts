@@ -1,10 +1,10 @@
 import { Router } from 'express';
 import { getCustomRepository } from 'typeorm';
 
-import CategoriesRepository from '../repositories/CategoriesRepository';
-import CreateCategoryService from '../services/CreateCategoryService';
+import CategoriesRepository from '@modules/categories/repositories/CategoriesRepository';
+import CreateCategoryService from '@modules/categories/services/CreateCategoryService';
 
-import ensureAuthenticated from '../middlewares/ensureAuthenticated';
+import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated';
 
 const categoriesRouter = Router();
 

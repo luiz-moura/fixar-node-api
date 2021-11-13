@@ -1,8 +1,8 @@
 import { getCustomRepository } from 'typeorm';
 
-import AppError from '../errors/AppError';
+import AppError from '@shared/errors/AppError';
 
-import Category from '../models/Category';
+import Category from '../infra/typeorm/entities/Category';
 import CategoriesRepository from '../repositories/CategoriesRepository';
 
 interface Request {
