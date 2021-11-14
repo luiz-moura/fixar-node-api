@@ -3,12 +3,17 @@ import AppError from '@shared/errors/AppError';
 import FakeCategoryRepository from '../repositories/fakes/FakeCategoriesRepository';
 import CreateCategoryService from './CreateCategoryService';
 
-describe('CreateCategory', () => {
-  it('should be able to create a new category', async () => {
-    const FakeCategoriesRepository = new FakeCategoryRepository();
-    const CreateCategory = new CreateCategoryService(FakeCategoriesRepository);
+let fakeCategoriesRepository: FakeCategoryRepository;
+let createCategory: CreateCategoryService;
 
-    const category = await CreateCategory.execute({
+describe('CreateCategory', () => {
+  beforeEach(() => {
+    fakeCategoriesRepository = new FakeCategoryRepository();
+    createCategory = new CreateCategoryService(fakeCategoriesRepository);
+  });
+
+  it('should be able to create a new category', async () => {
+    const category = await createCategory.execute({
       name: 'Marketing',
       slug: 'marketing',
     });
@@ -18,9 +23,6 @@ describe('CreateCategory', () => {
   });
 
   it('should not be able to create two categories on the same name', async () => {
-    const fakeCategoriesRepository = new FakeCategoryRepository();
-    const createCategory = new CreateCategoryService(fakeCategoriesRepository);
-
     const categoryName = 'Marketing';
 
     await createCategory.execute({
@@ -28,7 +30,7 @@ describe('CreateCategory', () => {
       slug: 'marketing',
     });
 
-    expect(
+    await expect(
       createCategory.execute({
         name: categoryName,
         slug: 'marketing',
