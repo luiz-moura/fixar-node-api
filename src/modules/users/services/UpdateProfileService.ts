@@ -10,8 +10,8 @@ interface IRequest {
   user_id: string;
   name: string;
   email: string;
-  type?: string;
   status?: boolean;
+  admin?: boolean;
   old_password?: string;
   password?: string;
 }

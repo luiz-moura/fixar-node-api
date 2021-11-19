@@ -3,5 +3,5 @@ export default interface ICreateUserDTO {
   email: string;
   password: string;
   status?: boolean;
-  type?: string;
+  admin?: boolean;
 }

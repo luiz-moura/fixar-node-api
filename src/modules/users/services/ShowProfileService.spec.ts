@@ -18,8 +18,6 @@ describe('UpdateUserAvatar', () => {
       name: 'John Doe',
       email: 'johndoe@example.com',
       password: '123456',
-      status: true,
-      type: 'admin',
     });
 
     const profile = await showProfile.execute({

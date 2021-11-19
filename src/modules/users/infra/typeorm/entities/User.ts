@@ -24,7 +24,7 @@ class User {
   status: boolean;
 
   @Column()
-  type: string;
+  admin: boolean;
 
   @Column()
   avatar: string;

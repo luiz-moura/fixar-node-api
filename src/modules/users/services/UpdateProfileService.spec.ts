@@ -24,8 +24,6 @@ describe('UpdateUserAvatar', () => {
       name: 'John Doe',
       email: 'johndoe@example.com',
       password: '123456',
-      status: true,
-      type: 'admin',
     });
 
     const updatedUser = await updateProfile.execute({
@@ -53,16 +51,12 @@ describe('UpdateUserAvatar', () => {
       name: 'John Doe',
       email: 'johndoe@example.com',
       password: '123456',
-      status: true,
-      type: 'admin',
     });
 
     const user = await fakeUsersRepository.create({
       name: 'John Trê',
       email: 'johntre@example.com',
       password: '123456',
-      status: true,
-      type: 'admin',
     });
 
     await expect(
@@ -70,8 +64,6 @@ describe('UpdateUserAvatar', () => {
         user_id: user.id,
         name: 'John Trê',
         email: 'johndoe@example.com',
-        status: true,
-        type: 'admin',
       }),
     ).rejects.toBeInstanceOf(AppError);
   });

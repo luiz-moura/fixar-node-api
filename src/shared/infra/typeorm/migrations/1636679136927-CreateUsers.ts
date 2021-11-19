@@ -32,8 +32,9 @@ export default class CreateUsers1636679136927 implements MigrationInterface {
             default: true,
           },
           {
-            name: 'type',
-            type: 'varchar',
+            name: 'admin',
+            type: 'boolean',
+            default: false,
           },
           {
             name: 'created_at',

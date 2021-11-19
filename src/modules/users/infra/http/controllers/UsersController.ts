@@ -5,7 +5,7 @@ import CreateUserService from '@modules/users/services/CreateUserService';
 
 export default class UsersController {
   public async create(request: Request, response: Response): Promise<Response> {
-    const { name, email, password, status, type } = request.body;
+    const { name, email, password, status, admin } = request.body;
 
     const createUser = container.resolve(CreateUserService);
 
@@ -14,7 +14,7 @@ export default class UsersController {
       email,
       password,
       status,
-      type,
+      admin,
     });
 
     delete user.password;
