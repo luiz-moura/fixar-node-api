@@ -6,14 +6,7 @@ import CategoriesController from '../controllers/CategoriesController';
 const categoriesRouter = Router();
 const categoriesController = new CategoriesController();
 
-categoriesRouter.use(ensureAuthenticated);
-
-// categoriesRouter.get('/', async (request, response) => {
-//   const categories = await categoriesRepository.find();
-
-//   return response.json(categories);
-// });
-
-categoriesRouter.post('/', categoriesController.create);
+categoriesRouter.post('/', ensureAuthenticated, categoriesController.create);
+categoriesRouter.get('/', categoriesController.index);
 
 export default categoriesRouter;

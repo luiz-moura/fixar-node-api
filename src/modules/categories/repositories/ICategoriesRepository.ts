@@ -3,5 +3,6 @@ import ICreateCategoryDTO from '../dtos/ICreateCategoryDTO';
 
 export default interface ICategoriesRepository {
   create(data: ICreateCategoryDTO): Promise<Category>;
+  findAll(): Promise<Category[]>;
   findByName(name: string): Promise<Category | undefined>;
 }
