@@ -22,7 +22,7 @@ InstructorsRouter.post(
   instructorsController.create,
 );
 InstructorsRouter.put(
-  '/:id',
+  '/:instructor_id',
   celebrate({
     [Segments.BODY]: {
       name: Joi.string().required(),
