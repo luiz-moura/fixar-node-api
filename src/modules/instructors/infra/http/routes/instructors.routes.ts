@@ -31,6 +31,7 @@ InstructorsRouter.put(
       linkedin: Joi.string(),
     },
   }),
+  ensureAuthenticated,
   instructorsController.update,
 );
 
