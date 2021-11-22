@@ -20,7 +20,7 @@ class Instructor {
   @Column({ nullable: true })
   url: string;
 
-  @Column()
+  @Column({ nullable: true })
   linkedin: string;
 
   @CreateDateColumn()

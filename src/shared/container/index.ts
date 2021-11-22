@@ -15,6 +15,9 @@ import PlatformsRepository from '@modules/platforms/infra/typeorm/repositories/P
 import IInstructorsRepository from '@modules/instructors/repositories/IInstructorsRepository';
 import InstructorsRepository from '@modules/instructors/infra/typeorm/repositories/InstructorsRepository';
 
+import ICoursesRepository from '@modules/courses/repositories/ICoursesRepository';
+import CoursesRepository from '@modules/courses/infra/typeorm/repositories/CoursesRepository';
+
 container.registerSingleton<ICategoriesRepository>(
   'CategoriesRepository',
   CategoriesRepository,
@@ -33,4 +36,9 @@ container.registerSingleton<IPlatformsRepository>(
 container.registerSingleton<IInstructorsRepository>(
   'InstructorsRepository',
   InstructorsRepository,
+);
+
+container.registerSingleton<ICoursesRepository>(
+  'CoursesRepository',
+  CoursesRepository,
 );
