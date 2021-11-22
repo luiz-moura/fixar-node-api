@@ -4,7 +4,10 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
+
+import Course from '@modules/courses/infra/typeorm/entities/Course';
 
 @Entity('platforms')
 class Platform {
@@ -22,6 +25,9 @@ class Platform {
 
   @Column({ nullable: true })
   url: string;
+
+  @OneToMany(() => Course, course => course.platform)
+  courses: Course[];
 
   @CreateDateColumn()
   created_at: Date;

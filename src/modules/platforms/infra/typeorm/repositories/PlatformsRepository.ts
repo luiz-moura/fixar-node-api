@@ -13,7 +13,9 @@ class PlatformRepository implements IPlatformRepository {
   }
 
   public async findAll(): Promise<Platform[]> {
-    const platforms = await this.ormRepository.find();
+    const platforms = await this.ormRepository.find({
+      relations: ['courses'],
+    });
 
     return platforms;
   }
