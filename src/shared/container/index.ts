@@ -12,6 +12,9 @@ import UsersRepository from '@modules/users/infra/typeorm/repositories/UsersRepo
 import IPlatformsRepository from '@modules/platforms/repositories/IPlatformsRepository';
 import PlatformsRepository from '@modules/platforms/infra/typeorm/repositories/PlatformsRepository';
 
+import IInstructorsRepository from '@modules/instructors/repositories/IInstructorsRepository';
+import InstructorsRepository from '@modules/instructors/infra/typeorm/repositories/InstructorsRepository';
+
 container.registerSingleton<ICategoriesRepository>(
   'CategoriesRepository',
   CategoriesRepository,
@@ -25,4 +28,9 @@ container.registerSingleton<IUsersRepository>(
 container.registerSingleton<IPlatformsRepository>(
   'PlatformsRepository',
   PlatformsRepository,
+);
+
+container.registerSingleton<IInstructorsRepository>(
+  'InstructorsRepository',
+  InstructorsRepository,
 );
