@@ -7,6 +7,7 @@ import profileRouter from '@modules/users/infra/http/routes/profile.routes';
 import platformsRouter from '@modules/platforms/infra/http/routes/platforms.routes';
 import instructorsRouter from '@modules/instructors/infra/http/routes/instructors.routes';
 import CoursesRouter from '@modules/courses/infra/http/routes/courses.routes';
+import RatingsRouter from '@modules/ratings/infra/http/routes/ratings.routes';
 
 const routes = Router();
 
@@ -17,5 +18,6 @@ routes.use('/profile', profileRouter);
 routes.use('/platforms', platformsRouter);
 routes.use('/instructors', instructorsRouter);
 routes.use('/courses', CoursesRouter);
+routes.use('/ratings', RatingsRouter);
 
 export default routes;
