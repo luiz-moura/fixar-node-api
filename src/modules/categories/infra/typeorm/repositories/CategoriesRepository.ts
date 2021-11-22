@@ -12,6 +12,12 @@ class CategoriesRepository implements ICategoriesRepository {
     this.ormRepository = getRepository(Category);
   }
 
+  public async findById(id: string): Promise<Category | undefined> {
+    const instructor = await this.ormRepository.findOne(id);
+
+    return instructor;
+  }
+
   public async findAll(): Promise<Category[]> {
     const categories = await this.ormRepository.find();
 
@@ -32,6 +38,10 @@ class CategoriesRepository implements ICategoriesRepository {
     await this.ormRepository.save(category);
 
     return category;
+  }
+
+  public async save(instructor: Category): Promise<Category> {
+    return this.ormRepository.save(instructor);
   }
 }
 

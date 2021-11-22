@@ -7,6 +7,7 @@ import CategoriesController from '../controllers/CategoriesController';
 const categoriesRouter = Router();
 const categoriesController = new CategoriesController();
 
+categoriesRouter.get('/', categoriesController.index);
 categoriesRouter.post(
   '/',
   celebrate({
@@ -18,6 +19,16 @@ categoriesRouter.post(
   ensureAuthenticated,
   categoriesController.create,
 );
-categoriesRouter.get('/', categoriesController.index);
+categoriesRouter.put(
+  '/:category_id',
+  celebrate({
+    [Segments.BODY]: {
+      name: Joi.string().required(),
+      slug: Joi.string(),
+    },
+  }),
+  ensureAuthenticated,
+  categoriesController.update,
+);
 
 export default categoriesRouter;
