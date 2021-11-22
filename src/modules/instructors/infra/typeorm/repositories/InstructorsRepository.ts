@@ -13,7 +13,9 @@ class InstructorRepository implements IInstructorRepository {
   }
 
   public async findAll(): Promise<Instructor[]> {
-    const instructors = await this.ormRepository.find();
+    const instructors = await this.ormRepository.find({
+      relations: ['courses'],
+    });
 
     return instructors;
   }

@@ -1,9 +1,11 @@
+import Course from '@modules/courses/infra/typeorm/entities/Course';
 import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
 
 @Entity('instructors')
@@ -22,6 +24,9 @@ class Instructor {
 
   @Column({ nullable: true })
   linkedin: string;
+
+  @OneToMany(() => Course, course => course.instructor)
+  courses: Course[];
 
   @CreateDateColumn()
   created_at: Date;
