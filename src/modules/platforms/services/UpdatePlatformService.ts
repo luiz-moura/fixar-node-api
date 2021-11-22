@@ -38,7 +38,7 @@ class UpdateProfileService {
     );
 
     if (platformWithUpdatedName && platformWithUpdatedName.id !== platform_id) {
-      throw new AppError('E-mail already in use.');
+      throw new AppError('Name already in use.');
     }
 
     platform.name = name;
