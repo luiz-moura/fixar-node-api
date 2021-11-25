@@ -10,8 +10,8 @@ class ListCoursesService {
     private coursesRepository: ICoursesRepository,
   ) {}
 
-  public async execute(): Promise<Course[]> {
-    const courses = await this.coursesRepository.findAll();
+  public async execute(active?: boolean): Promise<Course[]> {
+    const courses = await this.coursesRepository.findAll(active);
 
     return courses;
   }

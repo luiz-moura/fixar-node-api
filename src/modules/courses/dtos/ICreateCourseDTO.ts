@@ -5,8 +5,12 @@ export default interface ICreateCourseDTO {
   name: string;
   about: string;
   workload: string;
+  certification: string;
   level: string;
   price: string;
   pricing: string;
   url: string;
+  poster: string;
+  video: string;
+  active: boolean;
 }

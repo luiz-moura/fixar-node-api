@@ -65,6 +65,21 @@ export default class CreateCourses1637555048644 implements MigrationInterface {
             isNullable: true,
           },
           {
+            name: 'video',
+            type: 'varchar',
+            isNullable: true,
+          },
+          {
+            name: 'certification',
+            type: 'varchar',
+            isNullable: true,
+          },
+          {
+            name: 'active',
+            type: 'boolean',
+            default: false,
+          },
+          {
             name: 'created_at',
             type: 'timestamp',
             default: 'now()',

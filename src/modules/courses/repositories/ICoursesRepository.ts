@@ -4,7 +4,7 @@ import ICreateCourseDTO from '../dtos/ICreateCourseDTO';
 export default interface ICoursesRepository {
   create(data: ICreateCourseDTO): Promise<Course>;
   save(user: Course): Promise<Course>;
-  findById(id: string): Promise<Course | undefined>;
-  findAll(): Promise<Course[]>;
-  findByName(name: string): Promise<Course | undefined>;
+  findById(id: string, where?: object): Promise<Course | undefined>;
+  findAll(active?: boolean): Promise<Course[]>;
+  findByName(name: string, active?: boolean): Promise<Course | undefined>;
 }

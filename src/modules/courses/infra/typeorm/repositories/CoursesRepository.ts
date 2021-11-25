@@ -12,21 +12,34 @@ class CourseRepository implements ICourseRepository {
     this.ormRepository = getRepository(Course);
   }
 
-  public async findAll(): Promise<Course[]> {
-    const courses = await this.ormRepository.find({});
+  public async findAll(active = true): Promise<Course[]> {
+    const courses = await this.ormRepository.find({
+      where: { active },
+      relations: ['ratings'],
+    });
 
     return courses;
   }
 
-  public async findById(id: string): Promise<Course | undefined> {
-    const course = await this.ormRepository.findOne(id);
+  public async findById(
+    id: string,
+    where?: object,
+  ): Promise<Course | undefined> {
+    const course = await this.ormRepository.findOne(id, {
+      where: { ...where },
+      relations: ['ratings'],
+    });
 
     return course;
   }
 
-  public async findByName(name: string): Promise<Course | undefined> {
+  public async findByName(
+    name: string,
+    active = true,
+  ): Promise<Course | undefined> {
     const findCourse = await this.ormRepository.findOne({
-      where: { name },
+      where: { name, active },
+      relations: ['ratings'],
     });
 
     return findCourse;
@@ -39,10 +52,14 @@ class CourseRepository implements ICourseRepository {
     name,
     about,
     workload,
+    certification,
     level,
     price,
     pricing,
     url,
+    poster,
+    video,
+    active,
   }: ICreateCourseDTO): Promise<Course> {
     const course = this.ormRepository.create({
       platform_id,
@@ -51,10 +68,14 @@ class CourseRepository implements ICourseRepository {
       name,
       about,
       workload,
+      certification,
       level,
       price,
       pricing,
       url,
+      poster,
+      video,
+      active,
     });
 
     await this.ormRepository.save(course);

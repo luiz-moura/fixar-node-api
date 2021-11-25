@@ -15,10 +15,14 @@ interface IRequest {
   name: string;
   about: string;
   workload: string;
+  certification: string;
   level: string;
   price: string;
   pricing: string;
   url: string;
+  poster: string;
+  video: string;
+  active: boolean;
 }
 
 @injectable()
@@ -41,10 +45,14 @@ class CreateCourseService {
     name,
     about,
     workload,
+    certification,
     level,
     price,
     pricing,
     url,
+    poster,
+    video,
+    active,
   }: IRequest): Promise<Course> {
     const findInstructor = await this.instructorsRepository.findById(
       instructor_id,
@@ -73,10 +81,14 @@ class CreateCourseService {
       name,
       about,
       workload,
+      certification,
       level,
       price,
       pricing,
       url,
+      poster,
+      video,
+      active,
     });
 
     return course;

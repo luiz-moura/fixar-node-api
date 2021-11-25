@@ -13,10 +13,14 @@ interface IRequest {
   name: string;
   about: string;
   workload: string;
+  certification: string;
   level: string;
   price: string;
   pricing: string;
   url: string;
+  poster: string;
+  video: string;
+  active: boolean;
 }
 
 @injectable()
@@ -34,10 +38,14 @@ class UpdateProfileService {
     name,
     about,
     workload,
+    certification,
     level,
     price,
     pricing,
     url,
+    poster,
+    video,
+    active,
   }: IRequest): Promise<Course> {
     const course = await this.coursesRepository.findById(course_id);
 
@@ -52,10 +60,14 @@ class UpdateProfileService {
     course.name = name;
     if (about) course.about = about;
     if (workload) course.workload = workload;
+    if (certification) course.certification = certification;
     if (level) course.level = level;
     if (price) course.price = price;
     if (pricing) course.pricing = pricing;
     if (url) course.url = url;
+    if (poster) course.poster = poster;
+    if (video) course.video = video;
+    if (active) course.active = active;
 
     return this.coursesRepository.save(course);
   }
