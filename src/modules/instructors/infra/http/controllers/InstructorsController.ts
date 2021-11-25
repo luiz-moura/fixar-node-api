@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { classToClass } from 'class-transformer';
 
 import CreateInstructorService from '@modules/instructors/services/CreateInstructorService';
 import ListInstructorsService from '@modules/instructors/services/ListInstructorsService';
@@ -11,7 +12,7 @@ export default class InstructorsController {
 
     const instructors = await listInstructors.execute();
 
-    return response.json(instructors);
+    return response.json(classToClass(instructors));
   }
 
   public async create(request: Request, response: Response): Promise<Response> {
@@ -26,7 +27,7 @@ export default class InstructorsController {
       linkedin,
     });
 
-    return response.json(instructor);
+    return response.json(classToClass(instructor));
   }
 
   public async update(request: Request, response: Response): Promise<Response> {
@@ -43,6 +44,6 @@ export default class InstructorsController {
       linkedin,
     });
 
-    return response.json(instructor);
+    return response.json(classToClass(instructor));
   }
 }
