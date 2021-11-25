@@ -13,7 +13,8 @@ ratingsRouter.post(
   celebrate({
     [Segments.BODY]: {
       course_id: Joi.string().uuid().required(),
-      value: Joi.string().required(),
+      value: Joi.number().required(),
+      comment: Joi.string(),
     },
   }),
   ensureAuthenticated,
@@ -23,7 +24,8 @@ ratingsRouter.put(
   '/:rating_id',
   celebrate({
     [Segments.BODY]: {
-      value: Joi.string().required(),
+      value: Joi.number().required(),
+      comment: Joi.string(),
     },
   }),
   ensureAuthenticated,

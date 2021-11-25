@@ -23,6 +23,10 @@ export default class CreateRatings1637567661493 implements MigrationInterface {
           },
           {
             name: 'value',
+            type: 'numeric',
+          },
+          {
+            name: 'comment',
             type: 'varchar',
           },
           {

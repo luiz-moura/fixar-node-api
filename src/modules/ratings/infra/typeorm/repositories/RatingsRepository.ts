@@ -13,19 +13,25 @@ class RatingRepository implements IRatingRepository {
   }
 
   public async findAll(): Promise<Rating[]> {
-    const ratings = await this.ormRepository.find();
+    const ratings = await this.ormRepository.find({
+      relations: ['user'],
+    });
 
     return ratings;
   }
 
   public async findById(id: string): Promise<Rating | undefined> {
-    const rating = await this.ormRepository.findOne(id);
+    const rating = await this.ormRepository.findOne(id, {
+      relations: ['user'],
+    });
 
     return rating;
   }
 
   public async find(params: object): Promise<Rating | undefined> {
-    const rating = await this.ormRepository.findOne(params);
+    const rating = await this.ormRepository.findOne(params, {
+      relations: ['user'],
+    });
 
     return rating;
   }
@@ -34,11 +40,13 @@ class RatingRepository implements IRatingRepository {
     user_id,
     course_id,
     value,
+    comment,
   }: ICreateRatingDTO): Promise<Rating> {
     const rating = this.ormRepository.create({
       user_id,
       course_id,
       value,
+      comment,
     });
 
     await this.ormRepository.save(rating);

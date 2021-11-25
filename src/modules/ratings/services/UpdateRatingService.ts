@@ -9,7 +9,8 @@ import Rating from '../infra/typeorm/entities/Rating';
 interface IRequest {
   user_id: string;
   rating_id: string;
-  value: string;
+  value: number;
+  comment: string;
 }
 
 @injectable()
@@ -25,6 +26,7 @@ class UpdateRatingService {
     rating_id,
     user_id,
     value,
+    comment,
   }: IRequest): Promise<Rating> {
     const user = await this.usersRepository.findById(user_id);
 
@@ -39,6 +41,7 @@ class UpdateRatingService {
     }
 
     rating.value = value;
+    if (comment) rating.comment = comment;
 
     return this.ratingsRepository.save(rating);
   }
