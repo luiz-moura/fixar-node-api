@@ -21,7 +21,9 @@ class PlatformRepository implements IPlatformRepository {
   }
 
   public async findById(id: string): Promise<Platform | undefined> {
-    const platform = await this.ormRepository.findOne(id);
+    const platform = await this.ormRepository.findOne(id, {
+      relations: ['courses'],
+    });
 
     return platform;
   }

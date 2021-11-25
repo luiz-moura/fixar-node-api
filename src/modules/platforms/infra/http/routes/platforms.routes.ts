@@ -8,6 +8,7 @@ const PlatformsRouter = Router();
 const platformsController = new PlatformsController();
 
 PlatformsRouter.get('/', platformsController.index);
+PlatformsRouter.get('/show/:platform_id', platformsController.show);
 PlatformsRouter.post(
   '/',
   celebrate({
