@@ -8,6 +8,7 @@ const categoriesRouter = Router();
 const categoriesController = new CategoriesController();
 
 categoriesRouter.get('/', categoriesController.index);
+categoriesRouter.get('/show/:category_id', categoriesController.show);
 categoriesRouter.post(
   '/',
   celebrate({

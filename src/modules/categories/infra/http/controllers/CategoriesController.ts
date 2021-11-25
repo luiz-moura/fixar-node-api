@@ -1,9 +1,11 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { classToClass } from 'class-transformer';
 
 import CreateCategoryService from '@modules/categories/services/CreateCategoryService';
 import ListCategoriesService from '@modules/categories/services/ListCategoriesService';
 import UpdateCategoryService from '@modules/categories/services/UpdateCategoryService';
+import ShowCategoryService from '@modules/categories/services/ShowCategoryService';
 
 export default class CategoriesController {
   public async index(request: Request, response: Response): Promise<Response> {
@@ -11,7 +13,18 @@ export default class CategoriesController {
 
     const categories = await listCategories.execute();
 
-    return response.json(categories);
+    return response.json(classToClass(categories));
+  }
+
+  public async show(request: Request, response: Response): Promise<Response> {
+    const { category_id } = request.params;
+    const showCategory = container.resolve(ShowCategoryService);
+
+    const category = await showCategory.execute({
+      category_id,
+    });
+
+    return response.json(classToClass(category));
   }
 
   public async create(request: Request, response: Response): Promise<Response> {
@@ -21,7 +34,7 @@ export default class CategoriesController {
 
     const category = await createCategoryService.execute({ name, slug });
 
-    return response.json(category);
+    return response.json(classToClass(category));
   }
 
   public async update(request: Request, response: Response): Promise<Response> {
@@ -30,12 +43,12 @@ export default class CategoriesController {
 
     const updateCategoryService = container.resolve(UpdateCategoryService);
 
-    const instructor = await updateCategoryService.execute({
+    const category = await updateCategoryService.execute({
       category_id,
       name,
       slug,
     });
 
-    return response.json(instructor);
+    return response.json(classToClass(category));
   }
 }

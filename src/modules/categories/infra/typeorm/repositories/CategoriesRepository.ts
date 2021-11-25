@@ -13,7 +13,9 @@ class CategoriesRepository implements ICategoriesRepository {
   }
 
   public async findById(id: string): Promise<Category | undefined> {
-    const instructor = await this.ormRepository.findOne(id);
+    const instructor = await this.ormRepository.findOne(id, {
+      relations: ['courses'],
+    });
 
     return instructor;
   }
@@ -29,6 +31,7 @@ class CategoriesRepository implements ICategoriesRepository {
   public async findByName(name: string): Promise<Category | undefined> {
     const findCategory = await this.ormRepository.findOne({
       where: { name },
+      relations: ['courses'],
     });
 
     return findCategory;
