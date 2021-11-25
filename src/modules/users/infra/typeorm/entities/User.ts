@@ -4,9 +4,12 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
 
 import { Exclude, Expose } from 'class-transformer';
+
+import Rating from '@modules/ratings/infra/typeorm/entities/Rating';
 
 @Entity('users')
 class User {
@@ -22,6 +25,9 @@ class User {
   @Column()
   @Exclude()
   password: string;
+
+  @OneToMany(() => Rating, rating => rating.user)
+  ratings: Rating[];
 
   @Column()
   status: boolean;
