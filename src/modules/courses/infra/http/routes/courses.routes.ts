@@ -42,7 +42,7 @@ coursesRouter.put(
       name: Joi.string(),
       about: Joi.string(),
       workload: Joi.string(),
-      certification: Joi.string().required(),
+      certification: Joi.string(),
       level: Joi.string(),
       price: Joi.string(),
       pricing: Joi.string(),
