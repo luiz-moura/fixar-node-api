@@ -9,6 +9,7 @@ import instructorsRouter from '@modules/instructors/infra/http/routes/instructor
 import coursesRouter from '@modules/courses/infra/http/routes/courses.routes';
 import ratingsRouter from '@modules/ratings/infra/http/routes/ratings.routes';
 import coursesPendingRouter from '@modules/courses/infra/http/routes/coursesPending.routes';
+import supportsRouter from '@modules/supports/infra/http/routes/supports.routes';
 
 const routes = Router();
 
@@ -21,5 +22,6 @@ routes.use('/instructors', instructorsRouter);
 routes.use('/courses', coursesRouter);
 routes.use('/ratings', ratingsRouter);
 routes.use('/courses-pending', coursesPendingRouter);
+routes.use('/supports', supportsRouter);
 
 export default routes;

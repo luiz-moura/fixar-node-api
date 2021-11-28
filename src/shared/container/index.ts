@@ -21,6 +21,9 @@ import CoursesRepository from '@modules/courses/infra/typeorm/repositories/Cours
 import IRatingsRepository from '@modules/ratings/repositories/IRatingsRepository';
 import RatingsRepository from '@modules/ratings/infra/typeorm/repositories/RatingsRepository';
 
+import ISupportsRepository from '@modules/supports/repositories/ISupportsRepository';
+import SupportsRepository from '@modules/supports/infra/typeorm/repositories/SupportsRepository';
+
 container.registerSingleton<ICategoriesRepository>(
   'CategoriesRepository',
   CategoriesRepository,
@@ -49,4 +52,9 @@ container.registerSingleton<ICoursesRepository>(
 container.registerSingleton<IRatingsRepository>(
   'RatingsRepository',
   RatingsRepository,
+);
+
+container.registerSingleton<ISupportsRepository>(
+  'SupportsRepository',
+  SupportsRepository,
 );
