@@ -4,11 +4,11 @@ import { celebrate, Segments, Joi } from 'celebrate';
 import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated';
 import InstructorsController from '../controllers/InstructorsController';
 
-const InstructorsRouter = Router();
+const instructorsRouter = Router();
 const instructorsController = new InstructorsController();
 
-InstructorsRouter.get('/', instructorsController.index);
-InstructorsRouter.post(
+instructorsRouter.get('/', instructorsController.index);
+instructorsRouter.post(
   '/',
   celebrate({
     [Segments.BODY]: {
@@ -21,7 +21,7 @@ InstructorsRouter.post(
   ensureAuthenticated,
   instructorsController.create,
 );
-InstructorsRouter.put(
+instructorsRouter.put(
   '/:instructor_id',
   celebrate({
     [Segments.BODY]: {
@@ -35,4 +35,4 @@ InstructorsRouter.put(
   instructorsController.update,
 );
 
-export default InstructorsRouter;
+export default instructorsRouter;

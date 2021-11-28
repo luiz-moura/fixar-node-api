@@ -4,12 +4,12 @@ import { celebrate, Segments, Joi } from 'celebrate';
 import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated';
 import PlatformsController from '../controllers/PlatformsController';
 
-const PlatformsRouter = Router();
+const platformsRouter = Router();
 const platformsController = new PlatformsController();
 
-PlatformsRouter.get('/', platformsController.index);
-PlatformsRouter.get('/show/:platform_id', platformsController.show);
-PlatformsRouter.post(
+platformsRouter.get('/', platformsController.index);
+platformsRouter.get('/show/:platform_id', platformsController.show);
+platformsRouter.post(
   '/',
   celebrate({
     [Segments.BODY]: {
@@ -22,7 +22,7 @@ PlatformsRouter.post(
   ensureAuthenticated,
   platformsController.create,
 );
-PlatformsRouter.put(
+platformsRouter.put(
   '/:platform_id',
   celebrate({
     [Segments.BODY]: {
@@ -36,4 +36,4 @@ PlatformsRouter.put(
   platformsController.update,
 );
 
-export default PlatformsRouter;
+export default platformsRouter;
