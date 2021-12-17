@@ -46,6 +46,7 @@ export default class CoursesController {
       url,
       poster,
       video,
+      name_instructor,
       active,
     } = request.body;
 
@@ -65,6 +66,7 @@ export default class CoursesController {
       url,
       poster,
       video,
+      name_instructor,
       active,
     });
 
@@ -87,6 +89,7 @@ export default class CoursesController {
       url,
       poster,
       video,
+      name_instructor,
       active,
     } = request.body;
 
@@ -107,6 +110,7 @@ export default class CoursesController {
       url,
       poster,
       video,
+      name_instructor,
       active,
     });
 

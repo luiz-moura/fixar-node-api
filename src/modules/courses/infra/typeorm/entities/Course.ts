@@ -73,6 +73,9 @@ class Course {
   poster: string;
 
   @Column({ nullable: true })
+  name_instructor: string;
+
+  @Column({ nullable: true })
   video: string;
 
   @Column()

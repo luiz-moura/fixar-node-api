@@ -14,7 +14,7 @@ coursesRouter.post(
   celebrate({
     [Segments.BODY]: {
       platform_id: Joi.string().uuid().required(),
-      instructor_id: Joi.string().uuid().required(),
+      instructor_id: Joi.string().uuid(),
       category_id: Joi.string().uuid().required(),
       name: Joi.string().required(),
       about: Joi.string().required(),
@@ -26,6 +26,7 @@ coursesRouter.post(
       url: Joi.string(),
       poster: Joi.string().allow(null, ''),
       video: Joi.string().allow(null, ''),
+      name_instructor: Joi.string(),
       active: Joi.boolean().allow(null, ''),
     },
   }),
@@ -49,6 +50,7 @@ coursesRouter.put(
       url: Joi.string(),
       poster: Joi.string(),
       video: Joi.string(),
+      name_instructor: Joi.string(),
       active: Joi.boolean(),
     },
   }),

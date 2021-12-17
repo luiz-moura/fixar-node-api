@@ -59,6 +59,7 @@ class CourseRepository implements ICourseRepository {
     url,
     poster,
     video,
+    name_instructor,
     active,
   }: ICreateCourseDTO): Promise<Course> {
     const course = this.ormRepository.create({
@@ -75,6 +76,7 @@ class CourseRepository implements ICourseRepository {
       url,
       poster,
       video,
+      name_instructor,
       active,
     });
 

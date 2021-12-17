@@ -26,9 +26,9 @@ platformsRouter.put(
   '/:platform_id',
   celebrate({
     [Segments.BODY]: {
-      name: Joi.string().required(),
+      name: Joi.string(),
       about: Joi.string(),
-      type: Joi.string().required(),
+      type: Joi.string(),
       url: Joi.string(),
     },
   }),

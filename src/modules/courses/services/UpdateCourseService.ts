@@ -20,6 +20,7 @@ interface IRequest {
   url: string;
   poster: string;
   video: string;
+  name_instructor: string;
   active: boolean;
 }
 
@@ -45,6 +46,7 @@ class UpdateProfileService {
     url,
     poster,
     video,
+    name_instructor,
     active,
   }: IRequest): Promise<Course> {
     const course = await this.coursesRepository.findById(course_id);
@@ -67,6 +69,7 @@ class UpdateProfileService {
     if (url) course.url = url;
     if (poster) course.poster = poster;
     if (video) course.video = video;
+    if (name_instructor) course.name_instructor = name_instructor;
     if (active) course.active = active;
 
     return this.coursesRepository.save(course);

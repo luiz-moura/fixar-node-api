@@ -22,6 +22,7 @@ interface IRequest {
   url: string;
   poster: string;
   video: string;
+  name_instructor: string;
   active: boolean;
 }
 
@@ -52,6 +53,7 @@ class CreateCourseService {
     url,
     poster,
     video,
+    name_instructor,
     active,
   }: IRequest): Promise<Course> {
     const findInstructor = await this.instructorsRepository.findById(
@@ -88,6 +90,7 @@ class CreateCourseService {
       url,
       poster,
       video,
+      name_instructor,
       active,
     });
 

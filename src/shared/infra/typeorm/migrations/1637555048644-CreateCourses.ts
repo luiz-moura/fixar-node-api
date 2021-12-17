@@ -20,6 +20,7 @@ export default class CreateCourses1637555048644 implements MigrationInterface {
           {
             name: 'instructor_id',
             type: 'uuid',
+            isNullable: true,
           },
           {
             name: 'category_id',
@@ -71,6 +72,11 @@ export default class CreateCourses1637555048644 implements MigrationInterface {
           },
           {
             name: 'certification',
+            type: 'varchar',
+            isNullable: true,
+          },
+          {
+            name: 'name_instructor',
             type: 'varchar',
             isNullable: true,
           },

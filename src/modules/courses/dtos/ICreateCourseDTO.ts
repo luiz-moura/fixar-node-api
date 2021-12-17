@@ -1,6 +1,6 @@
 export default interface ICreateCourseDTO {
   platform_id: string;
-  instructor_id: string;
+  instructor_id?: string;
   category_id: string;
   name: string;
   about: string;
@@ -12,5 +12,6 @@ export default interface ICreateCourseDTO {
   url: string;
   poster: string;
   video: string;
+  name_instructor: string;
   active: boolean;
 }
